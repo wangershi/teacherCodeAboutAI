@@ -59,6 +59,7 @@ def do_rollout(agent, env, num_steps, render=False):
     ob = env.reset()
 
     # give a initial slope
+    # theta can't be larger than 30 degree
     env.env.env.state[2] += 30 * 2 * math.pi / 360
 
     for t in range(num_steps):
@@ -88,7 +89,7 @@ if __name__ == '__main__':
     env.env.theta_threshold_radians = 90 * 2 * math.pi / 360
     env.seed(0)
     np.random.seed(0)
-    params = dict(n_iter=10000, batch_size=250, elite_frac=0.02)
+    params = dict(n_iter=10000, batch_size=250, elite_frac=0.2)
 
     # You provide the directory to write to (can be an existing
     # directory, but can't contain previous monitor results. You can
